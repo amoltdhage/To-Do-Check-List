@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic) NSMutableArray *items;
+
 @end
 
 @implementation ViewController
@@ -17,6 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    self.items = @[@{@"name" : @"Dance" , @"category": @"Hobby"}]. mutableCopy;
+    
+  self.navigationItem.title =@"To Do Check List";
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,4 +32,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark Table view datasource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.items.count;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"TodoItemRow";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    NSDictionary *item = self.items[indexPath.row];
+    
+    cell.textLabel.text =item[@"name"];
+    
+    return cell;
+    
+}
+
+
+
+
 @end
+
