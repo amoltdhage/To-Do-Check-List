@@ -21,7 +21,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    self.items = @[@{@"name" : @"Dance" , @"category": @"Hobby"}]. mutableCopy;
+    self.items = @[@{@"name":@"Dance Class",@"category": @"Home"},
+                  @{@"name" : @"Shopping" , @"category": @"Home"},@{@"name":@"Metting", @"category": @"Home"}, @{@"name":@"Progrmming",@"category": @"Home"}]. mutableCopy;
     
   self.navigationItem.title =@"To Do Check List";
   
